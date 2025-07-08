@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { LogOut, Users, Calendar, Car, Route, DollarSign, FileText, UserPlus, Plus, Edit, Trash2, Eye, Check, X, Filter, Download, Settings, Shield, UserCheck, Building2 } from 'lucide-react';
-import BookingDetailsModal from '../shared/BookingDetailsModal';
-import BookingEditModal from '../shared/BookingEditModal';
 
 const AdminPortal: React.FC = () => {
   const { setCurrentUser, setCurrentPortal, bookings, routes, carTypes, drivers, agents, currentUser, addBooking, updateBookingStatus, assignBookingToDriver, deleteBooking, refreshBookings } = useApp();
