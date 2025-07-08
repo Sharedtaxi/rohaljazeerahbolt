@@ -1095,8 +1095,5 @@ const AdminPortal: React.FC = () => {
           }}
           onSave={handleSaveBooking}
         />
-    </div>
-  );
-};
 
 export default AdminPortal;
