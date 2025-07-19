@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MapPin, Clock, Star, Check, Phone, Car, Plane, Train, Mountain, Fuel as Mosque, Users, Briefcase as Suitcase, Home } from 'lucide-react';
+import { MapPin, Clock, Star, Check, Phone, Car, Plane, Train, Mountain, Fuel as Mosque, Users, Briefcase as Suitcase, Home, ArrowLeft } from 'lucide-react';
 import { Route, CarType, Customer, Booking } from '../../types';
 import { useApp } from '../../context/AppContext';
 
@@ -97,6 +97,16 @@ const BookingPortal: React.FC = () => {
   const handleCarTypeSelect = (carType: CarType) => {
     setSelectedCarType(carType);
     setCurrentPage('confirmation');
+  };
+
+  const handleBack = () => {
+    if (currentPage === 'confirmation') {
+      setCurrentPage('vehicle');
+      setSelectedCarType(null);
+    } else if (currentPage === 'vehicle') {
+      setCurrentPage('location');
+      setSelectedRoute(null);
+    }
   };
 
   const validateForm = () => {
@@ -241,6 +251,19 @@ const BookingPortal: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#f5f7fa]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Back Button - Only show when not on location page */}
+        {currentPage !== 'location' && (
+          <div className="mb-6">
+            <button
+              onClick={handleBack}
+              className="flex items-center space-x-2 text-[#1a3a5f] hover:text-[#152b46] transition-colors bg-white px-4 py-2 rounded-lg shadow-sm border border-gray-200 hover:shadow-md"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              <span className="font-medium">Back</span>
+            </button>
+          </div>
+        )}
+
         {/* Location Selection Page */}
         {currentPage === 'location' && (
           <div className="space-y-8">
